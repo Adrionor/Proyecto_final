@@ -16,7 +16,6 @@ The scope of this project is just a proof of concept for the subject. Other mode
 
 ## Questions 
 
-The dataset you mentioned is the “Company Bankruptcy Prediction” dataset, which was uploaded by the user “fedesoriano” on Kaggle1. This dataset contains bankruptcy data from the Taiwan Economic Journal for the years 1999-20091.
 
 The problem addressed by this dataset is the prediction of company bankruptcy using machine learning techniques.
 There are several notebooks already developed on Kaggle that use this dataset to predict company bankruptcy. Some examples include “Bankruptcy Prediction using Machine Learning” by the user “Siddharth Suresh” and “Bankruptcy Prediction using Neural Networks” by the user “Siddharth Suresh” .
