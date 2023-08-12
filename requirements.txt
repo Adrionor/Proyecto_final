@@ -3,8 +3,9 @@ pandas
 seaborn
 scipy
 matplotlib
--U scikit-learn
+scikit-learn
 xgboost
 imblearn
 catboost
 mlxtend
+joblib
