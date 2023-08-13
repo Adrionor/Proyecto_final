@@ -1,8 +1,8 @@
 # test.py
 import unittest
 import pandas as pd
-from load_data import DataLoader
-from preprocess import DataPreprocessor
+from Load.load_data import DataLoader
+from Preprocess.preprocess import DataPreprocessor
 from predictor import ModelPredictor
 
 class ModelTester(unittest.TestCase):
