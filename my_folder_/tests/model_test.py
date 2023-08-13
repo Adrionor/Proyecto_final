@@ -11,7 +11,7 @@ class SavedFile:
             print("The file may have not been saved.")
 
 # Crear una instancia de la clase ArchivoGuardado
-File = SavedFile(r'My_model\My_model_regression')
+File = SavedFile(r'my_folder_\My_model\My_model_regression')
 
 # Verificar si el archivo se ha guardado correctamente
 File.check_save()

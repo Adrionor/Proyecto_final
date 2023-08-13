@@ -14,7 +14,7 @@ The baseline (reference model) will be a simple model that acts as a comparison 
 
 The scope of this project is just a proof of concept for the subject. Other models can be trained using different techniques and machine learning algorithms. The final result will be a model capable of predicting company bankruptcy with reasonable accuracy.
 
-## Questions 
+## Questions
 
 
 The problem addressed by this dataset is the prediction of company bankruptcy using machine learning techniques.

@@ -9,7 +9,7 @@ import numpy as np
 class TestDataExistence(unittest.TestCase):
     def test_data_existence(self):
         # Load training data
-        df_train = pd.read_csv(r'Data\data.csv')
+        df_train = pd.read_csv(r'my_folder_\Data\data.csv')
 
         # Verify training data existance
         self.assertFalse(df_train.empty, "No training data")
@@ -22,7 +22,7 @@ class InputData(BaseModel):
 class OutputData(BaseModel):
     prediction: int
 
-model = joblib.load("My_model\My_model_regression")
+model = joblib.load("my_folder_\My_model\My_model_regression")
 
 app = FastAPI()
 
@@ -36,10 +36,10 @@ def train_model():
 def predict(input_data: InputData):
     # Convert the input data to a numpy array
     input_array = np.array([[input_data.feature1, input_data.feature2]])
-    
+
     # Make predictions using the loaded model
     prediction = model.predict(input_array)
-    
+
     # Create an instance of the output data model and return it
     output_data = OutputData(prediction=int(prediction[0]))
     return output_data

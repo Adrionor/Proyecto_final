@@ -11,3 +11,6 @@ mlxtend
 joblib
 fastapi
 pydantic
+pre-commit
+autoflake
+autopep8
