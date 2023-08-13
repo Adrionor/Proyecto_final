@@ -9,3 +9,5 @@ imblearn
 catboost
 mlxtend
 joblib
+fastapi
+pydantic
