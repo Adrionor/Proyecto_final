@@ -1,32 +1,32 @@
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
 
-class DataPreprocessor:
-    def __init__(self):
-        self.scaler = StandardScaler()
+class DataLoader:
+    def __init__(self, file_path: str):
+        self.file_path = file_path
 
-    def preprocess(self, data: pd.DataFrame) -> pd.DataFrame:
-        preprocessed_data = self.scaler.fit_transform(data)
-        return pd.DataFrame(preprocessed_data, columns=data.columns)
+    def load_data(self) -> pd.DataFrame:
+        return pd.read_csv(self.file_path)
 
-# Load bankruptcy data
-data = pd.read_csv(r"my_folder_\Data\data.csv")
+def train_model(X: pd.DataFrame):
+    # Train the model
+    classifier = LogisticRegression()
+    classifier.fit(X, X)
 
-# Split features and labels
-X = data.drop("Bankrupt?", axis=1)
-y = data["Bankrupt?"]
+    # Print the coefficients
+    print("Coefficients:", classifier.coef_)
 
-# Preprocess the data
-preprocessor = DataPreprocessor()
-X_preprocessed = preprocessor.preprocess(X)
+def main():
+    # Load preprocessed data
+    file_path = r"my_folder_\Data\preprocessed_data.csv"
+    loader = DataLoader(file_path)
+    data = loader.load_data()
 
-# Split preprocessed data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X_preprocessed, y, test_size=0.2, random_state=42)
+    # Exclude the target variable
+    X = data
 
-# Train and evaluate bankruptcy classifier
-classifier = LogisticRegression()
-classifier.fit(X_train, y_train)
-accuracy = classifier.score(X_test, y_test)
-print("Accuracy:", accuracy)
+    # Train the model
+    train_model(X)
+
+if __name__ == "__main__":
+    main()

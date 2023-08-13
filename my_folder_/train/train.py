@@ -1,42 +1,45 @@
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from preprocess import DataPreprocessor
 
-class DataLoader:
-    def __init__(self, file_path: str):
-        self.file_path = file_path
+class DataPreprocessor:
+    def __init__(self):
+        self.scaler = StandardScaler()
 
-    def load_data(self) -> pd.DataFrame:
-        return pd.read_csv(self.file_path)
+    def preprocess(self, data: pd.DataFrame, preprocessed_data_file: str) -> pd.DataFrame:
+        preprocessed_data = self.scaler.fit_transform(data)
+        preprocessed_df = pd.DataFrame(preprocessed_data, columns=data.columns)
+        preprocessed_df.to_csv(preprocessed_data_file, index=False)
+        return preprocessed_df
 
-def train_model(data: pd.DataFrame):
+def train_model(data: pd.DataFrame, preprocessed_data_file: str):
     # Split features and labels
     X = data.drop("Bankrupt?", axis=1)
     y = data["Bankrupt?"]
 
-    # Convert continuous target values to discrete classes
-    y = (y > 0.5).astype(int)
+    # Preprocess the data
+    preprocessor = DataPreprocessor()
+    preprocessed_data = preprocessor.preprocess(X, preprocessed_data_file)
 
-    # Split data into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    # Split preprocessed data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(preprocessed_data, y, test_size=0.2, random_state=42)
 
-    # Train the model
+    # Train and evaluate bankruptcy classifier
     classifier = LogisticRegression()
     classifier.fit(X_train, y_train)
-
-    # Evaluate the model
     accuracy = classifier.score(X_test, y_test)
     print("Accuracy:", accuracy)
 
 def main():
     # Load bankruptcy data
-    file_path = r"my_folder_\Data\data.csv"
-    loader = DataLoader(file_path)
-    data = loader.load_data()
+    data = pd.read_csv(r"my_folder_\Data\data.csv")
 
-    # Train the model
-    train_model(data)
+    # Specify the file path for the preprocessed data file
+    preprocessed_data_file = r"my_folder_\Data\preprocessed_data.csv"
+    
+    # Train the model and save the preprocessed data to a file
+    train_model(data, preprocessed_data_file)
 
 if __name__ == "__main__":
     main()
