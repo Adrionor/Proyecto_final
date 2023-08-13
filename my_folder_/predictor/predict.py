@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 class ModelPredictor:
     
     def __init__(self, model_path):
-        self.model = joblib.load(model_path)
+        self.model = joblib.load(r'my_folder_\My_model\My_model_regression')
 
     def predict(self, new_data):
         # Applying StandardScaler

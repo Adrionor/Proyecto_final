@@ -24,6 +24,8 @@ class OutputData(BaseModel):
 
 model = joblib.load("my_folder_\My_model\My_model_regression")
 
+#add FastAPI to the project
+
 app = FastAPI()
 
 @app.post("/train")
