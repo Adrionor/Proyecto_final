@@ -1,32 +1,34 @@
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
 
-class DataLoader:
-    def __init__(self, file_path: str):
-        self.file_path = file_path
+class DataPreprocessor:
+    def __init__(self):
+        self.scaler = StandardScaler()
 
-    def load_data(self) -> pd.DataFrame:
-        return pd.read_csv(self.file_path)
+    def preprocess(self, data: pd.DataFrame, preprocessed_data_file: str) -> pd.DataFrame:
+        preprocessed_data = self.scaler.fit_transform(data)
+        preprocessed_df = pd.DataFrame(preprocessed_data, columns=data.columns)
+        preprocessed_df.to_csv(preprocessed_data_file, index=False)
+        return preprocessed_df
 
-def train_model(X: pd.DataFrame):
-    # Train the model
-    classifier = LogisticRegression()
-    classifier.fit(X, X)
-
-    # Print the coefficients
-    print("Coefficients:", classifier.coef_)
+def preprocess_data(data: pd.DataFrame, preprocessed_data_file: str):
+    # Preprocess the data
+    preprocessor = DataPreprocessor()
+    preprocessed_data = preprocessor.preprocess(data, preprocessed_data_file)
+    
+    return preprocessed_data
 
 def main():
-    # Load preprocessed data
-    file_path = r"my_folder_\Data\preprocessed_data.csv"
-    loader = DataLoader(file_path)
-    data = loader.load_data()
+    # Load bankruptcy data
+    data = pd.read_csv(r"my_folder_\Data\data.csv")
 
-    # Exclude the target variable
-    X = data
-
-    # Train the model
-    train_model(X)
+    # Specify the file path for the preprocessed data file
+    preprocessed_data_file = r"my_folder_\Data\preprocessed_data.csv"
+    
+    # Preprocess the data
+    preprocessed_data = preprocess_data(data, preprocessed_data_file)
+    
+    print("Preprocessed data:\n", preprocessed_data)
 
 if __name__ == "__main__":
     main()
