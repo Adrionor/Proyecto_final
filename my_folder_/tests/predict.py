@@ -1,15 +1,17 @@
+# predictor.py
 import logging
 import joblib
 import pandas as pd
-import os
 from sklearn.preprocessing import StandardScaler
+import os
 
-log_file = os.path.join("my_folder_", "predictor", "predict.log")
+log_file = os.path.join("my_folder_", "tests", "predict.log")
+
 
 logging.basicConfig(level=logging.DEBUG,
                     format="%(asctime)s %(levelname)s - %(message)s",
                     handlers=[
-                        logging.FileHandler(log_file),
+                        logging.FileHandler("debug.log"),
                         logging.StreamHandler()
                     ])
 
@@ -38,7 +40,7 @@ def main():
     logging.info("Starting the main function...")
     
     # Load new data for prediction
-    new_data = pd.read_csv(r"my_folder_\Data\preprocessed_data.csv")
+    new_data = pd.read_csv(r"my_folder_\Data\data.csv")
     
     # Create an instance of the ModelPredictor class
     predictor = ModelPredictor(r"my_folder_\My_model\My_model_regression")

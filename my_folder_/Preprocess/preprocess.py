@@ -1,14 +1,30 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+import logging
+import os
+
+log_file = os.path.join("my_folder_", "Preprocess", "preprocess.log")
+
+logging.basicConfig(level=logging.WARNING,
+                    format="%(asctime)s %(levelname)s - %(message)s",
+                    handlers=[
+                        logging.FileHandler(log_file),
+                        logging.StreamHandler()
+                    ])
 
 class DataPreprocessor:
     def __init__(self):
         self.scaler = StandardScaler()
 
     def preprocess(self, data: pd.DataFrame, preprocessed_data_file: str) -> pd.DataFrame:
+        logging.debug("Start data preprocessing...")
+        
         preprocessed_data = self.scaler.fit_transform(data)
         preprocessed_df = pd.DataFrame(preprocessed_data, columns=data.columns)
         preprocessed_df.to_csv(preprocessed_data_file, index=False)
+        
+        logging.debug("Data preprocessing completed.")
+        
         return preprocessed_df
 
 def preprocess_data(data: pd.DataFrame, preprocessed_data_file: str):
@@ -19,6 +35,8 @@ def preprocess_data(data: pd.DataFrame, preprocessed_data_file: str):
     return preprocessed_data
 
 def main():
+    logging.info("Starting the program...")
+
     # Load bankruptcy data
     data = pd.read_csv(r"my_folder_\Data\data.csv")
 
@@ -26,9 +44,16 @@ def main():
     preprocessed_data_file = r"my_folder_\Data\preprocessed_data.csv"
     
     # Preprocess the data
+    logging.info("Preprocessing the data...")
     preprocessed_data = preprocess_data(data, preprocessed_data_file)
     
-    print("Preprocessed data:\n", preprocessed_data)
+    logging.info("Preprocessed data:\n%s", preprocessed_data)
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.WARNING,
+                        format="%(asctime)s %(levelname)s - %(message)s",
+                        handlers=[
+                            logging.FileHandler(log_file),
+                            logging.StreamHandler()
+                        ])
     main()

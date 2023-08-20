@@ -1,25 +1,37 @@
-#customtransformer test
-
+import logging
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
-from outliers_removal_transformer import OutliersRemovalTransformer
+import os
 
+log_file = os.path.join("my_folder_", "tests", "custom_transformers.log")
 
-# Load the dataset
-data = pd.read_csv('my_folder_\Data\data.csv')
+logging.basicConfig(level=logging.DEBUG,
+                    format="%(asctime)s %(levelname)s - %(message)s",
+                    handlers=[
+                        logging.FileHandler(log_file),
+                        logging.StreamHandler()
+                    ])
 
-# Split the dataset into features and target
-X = data.drop('Bankrupt?', axis=1)
-y = data['Bankrupt?']
+class OutliersRemovalTransformer:
+    def fit(self, X, y=None):
+        # No fitting is required for this transformer
+        return self
+    
+    def transform(self, X):
+        logging.debug("Start transforming data by removing outliers...")
+        
+        # Perform outlier removal transformation here
+        
+        logging.debug("Outlier removal transformation completed.")
+        return X
 
-# Split the data into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+def main():
+    logging.info("Starting the program...")
 
-# Create the pipeline with the custom transformer
-pipeline = Pipeline([
-    ('outliers_removal', OutliersRemovalTransformer()),
-    ('classifier', LogisticRegression())
-])
+    # Rest of your code
+
+if __name__ == "__main__":
+    main()

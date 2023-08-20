@@ -1,9 +1,7 @@
 import logging
 import os
 import pandas as pd
-
-log_file = os.path.join("my_folder_", "Load", "Load.log")
-
+log_file = os.path.join("my_folder_", "tests", "load.log")
 logging.basicConfig(level=logging.DEBUG,
                     format="%(asctime)s %(levelname)s - %(message)s",
                     handlers=[
