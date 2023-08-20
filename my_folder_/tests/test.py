@@ -1,10 +1,10 @@
 import logging
-import unittest
 import pandas as pd
 from load_data import DataLoader
 from preprocess import DataPreprocessor
 from predict import ModelPredictor
 import os
+import pytest
 
 log_file = os.path.join("my_folder_", "tests", "test.log")
 
@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.DEBUG,
                         logging.StreamHandler()
                     ])
 
-class ModelTester(unittest.TestCase):
+class TestModelTester:
     def test_predictions(self):
         logging.debug("Loading test data...")
         data_loader = DataLoader('test_data.csv')
@@ -36,7 +36,7 @@ class ModelTester(unittest.TestCase):
         logging.debug("Predictions made successfully.")
 
         logging.debug("Performing assertions...")
-        self.assertEqual(len(predictions), len(test_data))
+        assert len(predictions) == len(test_data)
         # Add more assertions as needed
         logging.debug("Assertions passed.")
 
@@ -47,6 +47,6 @@ if __name__ == '__main__':
     
     # Run the test cases
     logging.debug("Running the test cases...")
-    unittest.main()
+    pytest.main(['-s', '-v'])
     
     logging.info("Tests completed.")

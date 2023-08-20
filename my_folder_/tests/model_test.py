@@ -1,5 +1,6 @@
 import logging
 import os
+import pytest
 
 log_file = os.path.join("my_folder_", "tests", "model.log")
 
@@ -20,20 +21,17 @@ class SavedFile:
         else:
             logging.warning("The file may not have been saved.")
 
-def main():
-    logging.info("Starting the program...")
+@pytest.fixture
+def saved_file():
+    filename = r'my_folder_\My_model\My_model_regression'
+    return SavedFile(filename)
 
-    # Create an instance of the SavedFile class
-    logging.debug("Creating an instance of the SavedFile class...")
-    File = SavedFile(r'my_folder_\My_model\My_model_regression')
-    logging.debug("Instance of the SavedFile class has been created successfully.")
-
-    # Check if the file has been saved
-    logging.debug("Checking if the file has been saved...")
-    File.check_save()
-    logging.debug("File check completed.")
-
-    logging.info("Program execution completed.")
+def test_check_save(saved_file):
+    saved_file.check_save()
 
 if __name__ == "__main__":
-    main()
+    logging.info("Starting the program...")
+    # Run the tests
+    logging.debug("Running the tests...")
+    pytest.main(['-s', '-v'])
+    logging.info("Program execution completed.")
