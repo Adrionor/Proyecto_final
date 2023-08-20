@@ -10,7 +10,7 @@ To build the Docker image, run the following command:
 bash docker build -t final_project .
 ```
 
-![Expected Output](image.png)
+![Expected Output](my_folder_\images\image.png)
 
 ## Check the images 
 
@@ -20,7 +20,7 @@ to check the docker images run the following command
  docker images
 ```
 
-![Expected outup](image-1.png)
+![Expected outup](my_folder_\images\image-1.png)
 
 
 ## Run the Container
@@ -40,7 +40,7 @@ to check this run the following command
 docker ps -a
 
 ```
-![Expected Output](image-2.png)
+![Expected Output](my_folder_\images\image-2.png)
 
 
 ## Debug the Container
