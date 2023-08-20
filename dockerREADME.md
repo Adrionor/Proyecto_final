@@ -87,21 +87,12 @@ docker-compose up --build
 
 ## Run the following code to identify the CONTAINER ID of the Server container.
 
-docker ps -a
+$docker ps -a
 
 
 ## Save the logs to the local machine
 
 docker cp bb2de4836286:debug.log .
-
-
-
-
-
-
-
-
-
 
 
 
