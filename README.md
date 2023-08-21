@@ -125,7 +125,7 @@ to check the docker images run the following command
  docker images
 ```
 
-![Expected outup](my_folder_\images\image-1.png)
+![Expected output](my_folder_\images\image-1.png)
 
 
 ## Run the Container
