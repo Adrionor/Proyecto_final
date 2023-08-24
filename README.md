@@ -72,6 +72,16 @@ This project includes several test files that can be executed to validate the fu
 - `test_my_model.py`: Contains tests for specific functions or classes of the model module.
 - `model_test.py`: Contains tests that check the overall functionality of the model.
 
+## API
+
+To run the api open a command window and use the next command
+```python
+uvicorn main:app --reload
+```
+it should give something like this
+
+![running API](my_folder_\images\image-4.png)
+[url=https://postimg.cc/dk1HhHTF][img]https://i.postimg.cc/dk1HhHTF/image-4.png[/img][/url]
 ## Running the Tests
 
 To run the tests, follow these steps:
@@ -116,6 +126,7 @@ bash docker build -t final_project .
 ```
 
 ![Expected Output](my_folder_\images\image.png)
+[url=https://postimg.cc/TyQNYM1Q][img]https://i.postimg.cc/TyQNYM1Q/image.png[/img][/url]
 
 ## Check the images 
 
@@ -126,7 +137,7 @@ to check the docker images run the following command
 ```
 
 ![Expected output](my_folder_\images\image-1.png)
-
+[url=https://postimg.cc/sMY0qZRk][img]https://i.postimg.cc/sMY0qZRk/image-1.png[/img][/url]
 
 ## Run the Container
 
@@ -146,7 +157,7 @@ docker ps -a
 
 ```
 ![Expected Output](my_folder_\images\image-2.png)
-
+[url=https://postimg.cc/cKd5S4xr][img]https://i.postimg.cc/cKd5S4xr/image-2.png[/img][/url]
 
 ## Debug the Container
 
