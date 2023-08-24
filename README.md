@@ -82,7 +82,7 @@ it should give something like this
 
 ![running API](my_folder_\images\image-4.png)
 <div align="center">
-    <img src="my_folder_\images\image-4.png" width="400px"</img> 
+    <img src="my_folder_\images\image-4.png" width="1000px"</img> 
 </div>
 ## Running the Tests
 
@@ -129,7 +129,7 @@ bash docker build -t final_project .
 
 ![Expected Output](my_folder_\images\image.png)
 <div align="center">
-    <img src="my_folder_\images\image.png" width="400px"</img> 
+    <img src="my_folder_\images\image.png" width="1000px"</img> 
 </div>
 ## Check the images 
 
@@ -163,7 +163,7 @@ docker ps -a
 ```
 ![Expected Output](my_folder_\images\image-2.png)
 <div align="center">
-    <img src="my_folder_\images\image-2.png" width="400px"</img> 
+    <img src="my_folder_\images\image-2.png" width="1000px"</img> 
 </div>
 
 ## Debug the Container
