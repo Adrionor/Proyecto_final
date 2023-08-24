@@ -74,7 +74,7 @@ This project includes several test files that can be executed to validate the fu
 
 ## API
 
-To run the api open a command window and use the next command
+To run the api open a command window and use the next command positioned in the C:\Users\USERNAME\Proyecto_final\proyecto_final\
 ```python
 uvicorn main:app --reload
 ```
