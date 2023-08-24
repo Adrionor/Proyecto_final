@@ -141,7 +141,7 @@ to check the docker images run the following command
 
 ![Expected output](my_folder_\images\image-1.png)
 <div align="center">
-    <img src="my_folder_\images\image-1.png" width="400px"</img> 
+    <img src="my_folder_\images\image-1.png" width="1000px"</img> 
 </div>
 
 ## Run the Container
